@@ -23,7 +23,7 @@ const Auth = () => {
     const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword );
 
     const handlerSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         if(isSignup){
             dispatch(signup(formData, history))
         }else{
@@ -33,6 +33,11 @@ const Auth = () => {
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value});
+    }
+
+    const switchMode = () => {
+        setIsSignup((prevIsSignup) => !prevIsSignup);
+        setShowPassword(false)
     }
     const googleSuccess = async (res) => {
         const result = res?.profileObj;
@@ -53,10 +58,6 @@ const Auth = () => {
     }
 
     
-    const switchMode = () => {
-        setIsSignup((prevIsSignup) => !prevIsSignup);
-        handleShowPassword(false)
-    }
     return (
         <Container component="main" maxWidth="xs">
             <Paper className={classes.paper} elevation={3}>

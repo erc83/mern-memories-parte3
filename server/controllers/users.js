@@ -1,9 +1,12 @@
+import express from 'express';
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 
 import User from '../models/user.js'
 
-export const singin = async (req, res) => {
+const router = express.Router();
+
+export const signin = async (req, res) => {
     const { email, password } = req.body;
 
     try {
@@ -23,7 +26,7 @@ export const singin = async (req, res) => {
     }
 }
 
-export const singin = async (req, res) => {
+export const signup = async (req, res) => {
     const {email, password, confirmPassword, firstName, lastName } = req.body;
 
     try {
@@ -31,7 +34,7 @@ export const singin = async (req, res) => {
 
         if(existingUser) return res.status(400).json({message: "User already exist."})
     
-        if(password === confirmPassword) return res.status(400).json({message: "Password don't match"})
+        if(!password === confirmPassword) return res.status(400).json({message: "Password don't match"})
     
         const hashedPassword = await bcrypt.hash(password, 12)
 
@@ -44,3 +47,5 @@ export const singin = async (req, res) => {
         res.status(500).json({message: 'Something went wrong.'})
     }
 }
+
+export default router;
