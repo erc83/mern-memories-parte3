@@ -3,7 +3,7 @@ import { Container} from '@material-ui/core';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-import useStyles from './styles';
+//import useStyles from './styles';
 import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
 import Auth from './components/Auth/Auth';
