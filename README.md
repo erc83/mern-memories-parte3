@@ -1,16 +1,21 @@
-# Memories
+# Memorias
 
 ![Memories](https://i.ibb.co/Z8Y0CJv/Screenshot-2020-10-30-at-11-10-04.png)
 
-## Introduction
-This is a code repository for the corresponding video tutorial - https://youtube.com/playlist?list=PL6QREj8te1P7VSwhrMf3D3Xt4V6_SRkhu.
+## Introducción
+En el siguiente enlace puede encontrar el codigo en el repositorio en github - https://github.com/erc83/mern-memories-parte3.
 
-Using React, Node.js, Express & MongoDB you'll learn how to build a Full Stack MERN Application - from start to finish. The App is called "Memories" and it is a simple social media app that allows users to post interesting events that happened in their lives.
+Usando React, Node.js, Express & MongoDB se puede desplegar una aplicacion Full Stack MERN Application.
 
-By the end of this video, you will have a strong understanding of how the MERN Stack works.
+Es una aplicacion simple que busca proteger las memorias de cada usuario y que ademas puede dar likes a las memorias de las demás cuentas.
 
-## Stay up to date with new projects
-New major projects coming soon, subscribe to the mailing list to stay up to date https://javascriptmastery.eo.page/mailing-list.
 
-Setup:
-- run ```npm i && npm start``` for both client and server side to start the app
+## Para deplegar la aplicación en su sistema local
+
+- ejecutar ```npm i``` dentro de las carpetas client and server.
+
+- despues de la instalación en cada carpeta ejecutar ``npm start`` dentro de cada carpeta para desplegar 2 servidores uno para client y otro para server.
+
+- considerar tener una cuenta en mongoDB atlas para levantar el servidor del backend.
+
+- también cambiar el nombre del archivo ".example.env"  por el nombre ".env"  y asegurarse de colocar sus credenciales de la URL de mongo db, ya sea una url local o una url de mongodb atlas.
