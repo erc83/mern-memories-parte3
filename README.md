@@ -12,6 +12,8 @@ Es una aplicacion simple que busca proteger las memorias de cada usuario y que a
 
 ## Para deplegar la aplicación en su sistema local
 
+En el siguiente enlace puede ingresar al despliegue en el front-end https://memories-jwt.netlify.app
+
 - ejecutar ```npm i``` dentro de las carpetas client and server.
 
 - despues de la instalación en cada carpeta ejecutar ``npm start`` dentro de cada carpeta para desplegar 2 servidores uno para client y otro para server.
