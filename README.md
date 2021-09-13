@@ -19,3 +19,4 @@ Es una aplicacion simple que busca proteger las memorias de cada usuario y que a
 - considerar tener una cuenta en mongoDB atlas para levantar el servidor del backend.
 
 - también cambiar el nombre del archivo ".example.env"  por el nombre ".env"  y asegurarse de colocar sus credenciales de la URL de mongo db, ya sea una url local o una url de mongodb atlas.
+

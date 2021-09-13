@@ -10,8 +10,6 @@ import Auth from './components/Auth/Auth';
 
 
 const App = () => {
-  
-
   return (
     <Router>
       <Container maxWidth="lg">
