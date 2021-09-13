@@ -11,6 +11,7 @@ const Form = ({ currentId, setCurrentId }) => {
   const post = useSelector((state) => (currentId ? state.posts.find((message) => message._id === currentId) : null));
   const dispatch = useDispatch();
   const classes = useStyles();
+  const user = JSON.parse(localStorage.getItem('profile'));
 
   useEffect(() => {
     if (post) setPostData(post);
@@ -25,13 +26,23 @@ const Form = ({ currentId, setCurrentId }) => {
     e.preventDefault();
 
     if (currentId === 0) {
-      dispatch(createPost(postData));
+      dispatch(createPost({ ...postData, name: user?.result?.name }));
       clear();
     } else {
-      dispatch(updatePost(currentId, postData));
+      dispatch(updatePost(currentId, { ...postData, name: user?.result?.name }));
       clear();
     }
   };
+
+  if(!user?.result?.name) {
+    return (
+      <Paper className={classes.paper}>
+        <Typography variant="h6" align="center">
+          Please Sign In to create your own memories and like other's memories
+        </Typography>
+      </Paper>
+    )
+  }
 
   return (
     <Paper className={classes.paper}>
