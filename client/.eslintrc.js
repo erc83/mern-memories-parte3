@@ -1,4 +1,4 @@
-module.exports = {
+export const eslint = {
     env: {
       browser: true,
       es6: true,

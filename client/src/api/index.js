@@ -8,7 +8,8 @@ export const likePost = (id) => axios.patch(`${url}/${id}/likePost`);
 export const updatePost = (id, updatedPost) => axios.patch(`${url}/${id}`, updatedPost);
 export const deletePost = (id) => axios.delete(`${url}/${id}`);*/
 
-const API = axios.create({ baseURL: 'https://backend-memories-jwt.herokuapp.com/'});
+//const API = axios.create({ baseURL: 'https://backend-memories-jwt.herokuapp.com/'});
+const API = axios.create({ baseURL: 'http://localhost:5500/'});
 
 API.interceptors.request.use((req) => {
     if(localStorage.getItem('profile')) {
