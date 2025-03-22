@@ -8,7 +8,10 @@ import axios from 'axios';
     export const deletePost = (id) => axios.delete(`${url}/${id}`); */
 // const API = axios.create({ baseURL: 'https://backend-memories-jwt.herokuapp.com/'});
 
-const API = axios.create({ baseURL: 'http://localhost:5500/' });
+// const API = axios.create({ baseURL: 'http://localhost:5500/' });
+
+const API_URL = process.env.REACT_APP_API_URL || 'http://54.205.124.94:80/';
+const API = axios.create({ baseURL: `${API_URL}` });
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('profile')) {
