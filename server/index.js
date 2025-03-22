@@ -20,8 +20,8 @@ app.use('/user', userRoutes)
 const CONNECTION_URL = process.env.MONGODB_URI;
 const PORT = process.env.PORT|| 5500;
 
-mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(CONNECTION_URL)
   .then(() => app.listen(PORT, () => console.log(`Server Running on Port:${PORT}`)))
   .catch((error) => console.log(`${error} did not connect`));
 
-mongoose.set('useFindAndModify', false);
+//mongoose.set('useFindAndModify', false);

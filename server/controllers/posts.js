@@ -59,7 +59,7 @@ export const deletePost = async (req, res) => {
 
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
 
-    await PostMessage.findByIdAndRemove(id);
+    await PostMessage.findByIdAndDelete(id);
 
     res.json({ message: "Post deleted successfully." });
 }
@@ -67,22 +67,31 @@ export const deletePost = async (req, res) => {
 export const likePost = async (req, res) => {
     const { id } = req.params;
 
-if (!req.userId) return res.json({ message : 'Unauthenticated'});
+    if (!req.userId) return res.json({ message : 'Unauthenticated'});
 
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
     
     const post = await PostMessage.findById(id);
+    if (!post) return res.status(404).json({ message: "Post not found" });
 
-const index = post.likes.findIndex((id) => id === String(req.userId));
 
-if(index === -1) {
-    post.likes.push(req.userId);
-}else{
-    post.likes = post.likes.filter((id) => id === String(req.userId));
-}
+    const hasLiked = post.likes.includes(String(req.userId))
 
-    const updatedPost = await PostMessage.findByIdAndUpdate(id, post, { new: true });
-    
+    //const index = post.likes.findIndex((likeId) => likeId === String(req.userId));
+    /* 
+    if(index === -1) {
+        post.likes.push(req.userId);
+    }else{
+        post.likes = post.likes.filter((likeId) => likeId === String(req.userId));
+    } */
+
+    const updatedPost = await PostMessage.findByIdAndUpdate(
+        id, 
+        {
+            $pull: hasLiked ? { likes: req.userId } : {},
+            $addToSet: !hasLiked ? { likes: req.userId } : {},
+        },         
+        { new: true });
     res.json(updatedPost);
 }
 
